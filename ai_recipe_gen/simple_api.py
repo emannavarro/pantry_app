@@ -9,11 +9,11 @@ if __name__ == "__main__":
 
     prompt   = input("Enter a prompt for chatGPT: ")
     response = openai.Completion.create(
-        engine = "text-davinci-002",
-        prompt = prompt,
-        max_tokens = 60,
-        n = 1,
-        stop = None,
+        engine      = "text-davinci-002",
+        prompt      = prompt,
+        max_tokens  = 60,
+        n           = 1,
+        stop        = None,
         temperature = 0.5
     )
 
