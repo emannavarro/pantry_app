@@ -115,5 +115,5 @@ if __name__ == "__main__":
         "pizza dough",
         "cookie dough",
     ]
-    # mylist=Pantry_Ingredients_to_recipes(test_ingredients,20)
-    # ai_recipe("Fudge Banana Milkshake",test_ingredients)
+    #mylist=Pantry_Ingredients_to_recipes(test_ingredients,20)
+    ai_recipe("Fudge Banana Milkshake",test_ingredients)
