@@ -12,7 +12,7 @@ if __name__ == "__main__":
         engine      = "text-davinci-003",
         prompt      = prompt,
         temperature=0.3,
-        max_tokens=200,
+        max_tokens=500,
         top_p=1.0,
         frequency_penalty=0.0,
         presence_penalty=0.0

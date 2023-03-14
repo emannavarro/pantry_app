@@ -101,6 +101,15 @@ def ai_recipe(recipe: str, listOfIngredients: list) -> None:
     assert bool(prompt), "Prompt is empty"
     open_ai_call(prompt)
 
+def Pantry_Ingredints_and_favorite_dishes_to_recipes( listOfIngredients: list, numberOfRecipes: int,favorite_recipe: list) -> None:
+    assert len(listOfIngredients) > 0, "ingredients list is empty"
+    ngredients = ", ".join(listOfIngredients)
+    prompt = f"Ingredients: {listOfIngredients}. Previous recipes I liked: {favorite_recipe}. Please generate {numberOfRecipes} new recipes using these ingredients and similar to my previous recipe preferences and try to avoid including any unnecessary ingredients."
+    assert bool(prompt), "Prompt is empty"
+    open_ai_call(prompt)
+
+
+
 
 if __name__ == "__main__":
     test_ingredients = [
@@ -115,5 +124,8 @@ if __name__ == "__main__":
         "pizza dough",
         "cookie dough",
     ]
+    favorite_dishes = ["pizza", "tomatoe soup","carbonera"]
     #mylist=Pantry_Ingredients_to_recipes(test_ingredients,20)
-    ai_recipe("Fudge Banana Milkshake",test_ingredients)
+    #ai_recipe("Fudge Banana Milkshake",test_ingredients)
+    favorite_dishes = ["pizza", "tomatoe soup","carbonera"]
+    Pantry_Ingredints_and_favorite_dishes_to_recipes(test_ingredients,20,favorite_dishes)
