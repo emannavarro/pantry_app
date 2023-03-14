@@ -37,7 +37,7 @@ def Pantry_Ingredients_to_recipes(
     listOfIngredients: list, numberOfRecipes: int
 ) -> None:
     """
-    Generates a list of possible recipes given a list of ingredient and a desired number of recipes
+    Generates a list of possible recipes given a list of ingredient and a desired number of recipes  to suggest
 
 
     Args:
@@ -102,6 +102,46 @@ def ai_recipe(recipe: str, listOfIngredients: list) -> None:
     open_ai_call(prompt)
 
 def Pantry_Ingredints_and_favorite_dishes_to_recipes( listOfIngredients: list, numberOfRecipes: int,favorite_recipe: list) -> None:
+    """
+    Generates a list of possible recipes given a list of ingredient and favorite recipes and a desired number of recipes to suggest
+
+
+    Args:
+        listOfIngredients (list): list of pantry Ingredients
+
+        numberOfRecipes (int): number of desired recipes to produce
+
+        favorite_recipe (list): list of favorite recipes
+
+
+        Example:
+                test_ingredients = [
+                                    "milk",
+                                    "fudge",
+                                    "banana",
+                                    "chicken",
+                                    "pasta",
+                                    "basil",
+                                    "tomatoe sauce",
+                                    "motzerrela cheese",
+                                    "pizza dough",
+                                    "cookie dough",
+                                ]
+                favorite_dishes = ["pizza", "tomatoe soup","carbonera"]
+                Pantry_Ingredients_to_recipes(test_ingredients,desired_recipes,10)
+
+            Example output
+                1. Pizza Dough Calzones with Basil, Motzerella Cheese, and Tomato Sauce
+                2. Fudge and Banana Milkshake
+                3. Chicken and Pasta Carbonara
+                4. Chicken and Basil Pizza
+                5. Fudge and Cookie Dough Ice Cream
+                6. Fudge and Banana Smoothie
+                7. Chicken and Tomato Soup
+                8. Chicken and Basil Alfredo
+                9. Chicken and Motzerella Pizza
+                10. Fudge and Banana Pancakes
+    """
     assert len(listOfIngredients) > 0, "ingredients list is empty"
     ngredients = ", ".join(listOfIngredients)
     prompt = f"Ingredients: {listOfIngredients}. Previous recipes I liked: {favorite_recipe}. Please generate {numberOfRecipes} new recipes using these ingredients and similar to my previous recipe preferences and try to avoid including any unnecessary ingredients."
