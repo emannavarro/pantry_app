@@ -56,6 +56,7 @@ def Pantry_Ingredients_to_recipes(
             3. Banana Fudge Cake
             4. Banana Fudge Brownies
             5. Banana Fudge Pudding
+
     """
     assert len(listOfIngredients) > 0, "ingredients list is empty"
     assert (
@@ -69,10 +70,9 @@ def Pantry_Ingredients_to_recipes(
 
 
 def ai_recipe(recipe: str, listOfIngredients: list) -> None:
+   
     """
-
     Generates a recipe given a recipe name and a list of ingredients
-
 
     Args:
 
@@ -101,10 +101,12 @@ def ai_recipe(recipe: str, listOfIngredients: list) -> None:
     assert bool(prompt), "Prompt is empty"
     open_ai_call(prompt)
 
-def Pantry_Ingredints_and_favorite_dishes_to_recipes( listOfIngredients: list, numberOfRecipes: int,favorite_recipe: list) -> None:
+
+def Pantry_Ingredints_and_favorite_dishes_to_recipes(
+    listOfIngredients: list, numberOfRecipes: int, favorite_recipe: list
+) -> None:
     """
     Generates a list of possible recipes given a list of ingredient and favorite recipes and a desired number of recipes to suggest
-
 
     Args:
         listOfIngredients (list): list of pantry Ingredients
@@ -112,7 +114,6 @@ def Pantry_Ingredints_and_favorite_dishes_to_recipes( listOfIngredients: list, n
         numberOfRecipes (int): number of desired recipes to produce
 
         favorite_recipe (list): list of favorite recipes
-
 
         Example:
                 test_ingredients = [
@@ -141,14 +142,13 @@ def Pantry_Ingredints_and_favorite_dishes_to_recipes( listOfIngredients: list, n
                 8. Chicken and Basil Alfredo
                 9. Chicken and Motzerella Pizza
                 10. Fudge and Banana Pancakes
+
     """
     assert len(listOfIngredients) > 0, "ingredients list is empty"
     ngredients = ", ".join(listOfIngredients)
-    prompt = f"Ingredients: {listOfIngredients}. Previous recipes I liked: {favorite_recipe}. Please generate {numberOfRecipes} new recipes using these ingredients and similar to my previous recipe preferences and try to avoid including any unnecessary ingredients."
+    prompt = f"Ingredients: {listOfIngredients}. Previous recipes I liked: {favorite_recipe}. Please generate {numberOfRecipes} new recipes using these ingredients and similar to my previous recipe preferences and try to avoid including any unnecessary ingredients and just list out the names."
     assert bool(prompt), "Prompt is empty"
     open_ai_call(prompt)
-
-
 
 
 if __name__ == "__main__":
@@ -164,8 +164,35 @@ if __name__ == "__main__":
         "pizza dough",
         "cookie dough",
     ]
-    favorite_dishes = ["pizza", "tomatoe soup","carbonera"]
-    #mylist=Pantry_Ingredients_to_recipes(test_ingredients,20)
-    #ai_recipe("Fudge Banana Milkshake",test_ingredients)
-    favorite_dishes = ["pizza", "tomatoe soup","carbonera"]
-    Pantry_Ingredints_and_favorite_dishes_to_recipes(test_ingredients,20,favorite_dishes)
+    favorite_dishes = ["pizza", "tomatoe soup", "carbonera"]
+    ingredients_print = ", ".join(test_ingredients)
+    favorite_dishes_print = ", ".join(favorite_dishes)
+
+    
+
+    while True:
+        print(f"Here is what is in our pantry ingredient: \n{ingredients_print}")
+        ingredient = input("Please enter a new ingredient (or 'done' to stop): ")
+        if ingredient == 'done':
+            break
+        else:
+            # Add the ingredient to the list
+            test_ingredients.append(ingredient)
+    
+    while True:
+        print(f"Here are our list of favorite dishes: \n{favorite_dishes_print}")
+        favorite_dish = input("Please enter a favorite (or 'done' to stop): ")
+        if favorite_dish == 'done':
+            break
+        else:
+            # Add the favorite dish to the list
+            test_ingredients.append(favorite_dish)
+    
+
+    
+    # mylist=Pantry_Ingredients_to_recipes(test_ingredients,20)
+    # ai_recipe("Fudge Banana Milkshake",test_ingredients)
+    
+    Pantry_Ingredints_and_favorite_dishes_to_recipes(
+        test_ingredients, 20, favorite_dishes
+    )
