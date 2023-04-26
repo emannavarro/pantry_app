@@ -1,4 +1,5 @@
-import AI_recipe_queries
+from AI_recipe_queries_class import AI_RECIPE
+
 
 if __name__ == "__main__":
     test_ingredients = [
@@ -13,11 +14,14 @@ if __name__ == "__main__":
         "pizza dough",
         "cookie dough",
     ]
+ 
     favorite_dishes = ["pizza", "tomatoe soup", "carbonera"]
-    ingredients_print = ", ".join(test_ingredients)
-    favorite_dishes_print = ", ".join(favorite_dishes)
+    AI_recipe_object = AI_RECIPE(test_ingredients,favorite_dishes)
 
-    
+    ingredients_print = ", ".join(AI_recipe_object.my_ingredients())
+    favorite_dishes_print = ", ".join(AI_recipe_object.my_favorite_dishes())
+
+   
 
     while True:
         print(f"Here is what is in our pantry ingredient: \n{ingredients_print}")
@@ -26,7 +30,7 @@ if __name__ == "__main__":
             break
         else:
             # Add the ingredient to the list
-            test_ingredients.append(ingredient)
+            AI_recipe_object.append_ingredients(ingredient)
     
     while True:
         print(f"Here are our list of favorite dishes: \n{favorite_dishes_print}")
@@ -35,13 +39,15 @@ if __name__ == "__main__":
             break
         else:
             # Add the favorite dish to the list
-            test_ingredients.append(favorite_dish)
+            AI_recipe_object.append_favorite_dishes(favorite_dish)
     
 
     
-    # mylist=Pantry_Ingredients_to_recipes(test_ingredients,20)
+    AI_recipe_object.Pantry_Ingredients_to_recipes(20)
     # ai_recipe("Fudge Banana Milkshake",test_ingredients)
     
-    AI_recipe_queries.Pantry_Ingredints_and_favorite_dishes_to_recipes(
-        test_ingredients, 20, favorite_dishes
-    )
+    #AI_recipe_object.ai_recipe("Chicken and Mozzarella Calzone")
+
+    new_dish=input("Enter Desired Recipe above: ")
+    AI_recipe_object.ai_recipe(new_dish)
+    
