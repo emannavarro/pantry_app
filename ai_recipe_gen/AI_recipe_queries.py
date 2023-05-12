@@ -58,6 +58,7 @@ def Pantry_Ingredients_to_recipes(
             5. Banana Fudge Pudding
 
     """
+    print(len(listOfIngredients),"number of ingredients")
     assert len(listOfIngredients) > 0, "ingredients list is empty"
     assert (
         numberOfRecipes > 0
